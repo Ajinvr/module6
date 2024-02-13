@@ -1,0 +1,46 @@
+@font-face {
+    font-family: 'mtf';
+    src: url('../fonts/Inter-Light.ttf') format('truetype'); 
+  }
+
+
+body{
+
+    padding: 0px;
+    margin: 0px;
+    font-family: mtf;
+    background-image:  linear-gradient(to bottom right,black,blue);
+    background-repeat: none;
+    background-attachment: fixed;
+}
+.headermain{
+    height: 50px;
+    padding: 5px 0px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid white;
+    justify-content: space-between;
+    
+}
+
+.mainimg{
+  height: 250px;
+}
+
+.menubtn{
+  border: none;
+   font-size: 28px;
+  color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.headermaintext{
+  margin-right: 20px;
+}
+
+.headermaintext{
+    display: flex;
+    gap: 30px;
+    margin-left: 10px;
+    color: white;
+}
