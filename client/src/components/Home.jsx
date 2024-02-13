@@ -39,7 +39,7 @@ function Home() {
     formData.append('file', file);
 
     try {
-      const response = await axios.post('http://localhost:4000', formData, {
+      const response = await axios.post('https://module6-backend.vercel.app', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -60,7 +60,7 @@ function Home() {
 
   const downloadFile = async () => {
     try {
-      const response = await axios.post('http://localhost:4000/get', { _id: downloadId }, { responseType: 'blob' });
+      const response = await axios.post('https://module6-backend.vercel.app/get', { _id: downloadId }, { responseType: 'blob' });
       const blob = new Blob([response.data], { type: response.headers['content-type'] });
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
