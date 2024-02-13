@@ -20,7 +20,7 @@ function fileUploadMiddleware(req, res, next) {
         if (err instanceof multer.MulterError) {
             return res.json({ message: 'Upload error occurred', toaststatus: "error" });
         } else if (err) {
-            return res.status(500).json({ message: 'Unknown error occurred', toaststatus: "error" });
+            return res.json({ message: 'Unknown error occurred', toaststatus: "error" });
         }
         next();
     });

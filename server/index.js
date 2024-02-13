@@ -12,7 +12,7 @@ const bodyParser = require('body-parser')
 const port = process.env.PORT || 4000
 
 app.use(bodyParser.json());
-app.use(cors())
+app.use(cors({"Header set Access-Control-Allow-Origin":"*"}))
 app.use('/',router)
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
