@@ -1,0 +1,32 @@
+.logoimg{ 
+    width: 100%;
+}
+
+.gsmain{
+    padding: 15px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.gssub div{
+  align-items: center;
+   display: flex;
+   justify-content: center;
+}
+
+.gssub div button{
+    box-shadow: 0px 0px 20px 1px ;
+    background-color: rgba(0, 0, 136, 0.918);
+    color: white;
+    padding: 10px;
+    margin-top:50px;
+    border: 1px solid white;
+    border-radius: 5px;
+    transition: .5s;
+}
+
+.gssub div button:hover{
+    background-color: rgba(255, 255, 255, 0.918);
+    color: rgb(0, 0, 0);
+}

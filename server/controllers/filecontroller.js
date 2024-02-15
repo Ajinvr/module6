@@ -4,7 +4,7 @@ const path = require('path');
 
 const addFile = async (req,res)=>{
 
-  if (false) {
+  if (!req.file.originalname && !req.file.mimetype && !req.file.size && !req.file.path) {
      return res.json({message: 'Provide a valid file', toaststatus: "error" });
   }else{
       try {

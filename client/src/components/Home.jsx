@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import "../styles/home.css"
 import { ToastContainer, toast } from 'react-toastify';
@@ -18,8 +18,16 @@ function Home() {
     });
   };
 
+ let fileid = [] 
+
   const [file, setFile] = useState(null);
   const [downloadId, setDownloadId] = useState('');
+  
+  
+  useEffect(() => {
+       localStorage.setItem('fileids', fileid);
+  }, []);
+  
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -39,7 +47,7 @@ function Home() {
     formData.append('file', file);
 
     try {
-      const response = await axios.post('https://module6-backend.vercel.app', formData, {
+      const response = await axios.post('http://localhost:4000', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -50,6 +58,12 @@ function Home() {
         return;
       }
       alert(`your file id is "${response.data.fileid}" Save it somewhere safe !!!`)
+      let fileids = localStorage.getItem('fileids');
+      fileid.push(fileids)
+      fileid.push(response.data.fileid)
+      console.log(fileid);
+      localStorage.setItem('fileids',fileid);
+       
       notify("success", "File uploaded successfully!");
       setFile(null);
     } catch (error) {
@@ -60,7 +74,7 @@ function Home() {
 
   const downloadFile = async () => {
     try {
-      const response = await axios.post('https://module6-backend.vercel.app/get', { _id: downloadId }, { responseType: 'blob' });
+      const response = await axios.post('http://localhost:4000/get', { _id: downloadId }, { responseType: 'blob' });
       const blob = new Blob([response.data], { type: response.headers['content-type'] });
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
@@ -88,6 +102,7 @@ function Home() {
       <ToastContainer />
     </div>
   );
+ 
 }
 
 export default Home;
